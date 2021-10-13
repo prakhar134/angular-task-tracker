@@ -4,19 +4,19 @@
       "id": "2",
       "text": "Test text 3",
       "day": "May 12th at 2:30pm",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": "4",
       "text": "Test text 4",
       "day": "April 13th at 10:30pm",
-      "reminder": false
+      "reminder": true
     },
     {
-      "id": "3",
-      "text": "Test text 4",
-      "day": "July 13th at 10:30pm",
-      "reminder": false
+      "text": "test 5",
+      "day": "test date time 5",
+      "reminder": true,
+      "id": "av8vdJr"
     }
   ]
 }
