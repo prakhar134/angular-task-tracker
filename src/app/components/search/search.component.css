@@ -1,0 +1,21 @@
+.search-form {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.search-btn {
+  padding: 0.5rem;
+  background-color: black;
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+#search {
+  padding: 0.5rem;
+  width: 80%;
+  border-radius: 5px;
+}

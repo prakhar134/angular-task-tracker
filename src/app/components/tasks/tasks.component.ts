@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -10,11 +11,22 @@ import { Observable, of } from 'rxjs';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
+  searchResult: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private router: Router) {}
+
+  // ngOnInit(): void {
+  //   this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+  // }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+    this.tempFunc();
+  }
+
+  tempFunc() {
+    if (this.searchResult.length === 0) {
+      this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+    } else this.tasks = this.searchResult;
   }
 
   deleteTask(task: Task) {
@@ -32,5 +44,16 @@ export class TasksComponent implements OnInit {
 
   addTask(task: Task) {
     this.taskService.addTask(task).subscribe((task) => this.tasks.push(task));
+  }
+
+  searchTask(text: string) {
+    console.log(text);
+    this.searchResult = [];
+    this.tasks.map((task) => {
+      const temp = task.text.split(' ');
+      if (temp.indexOf(text) !== -1) this.searchResult.push(task);
+    });
+
+    this.tempFunc();
   }
 }

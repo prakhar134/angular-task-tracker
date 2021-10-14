@@ -1,0 +1,10 @@
+<form class="search-form" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    name="search"
+    [(ngModel)]="searchText"
+    id="search"
+    placeholder="Search here"
+  />
+  <input type="submit" class="search-btn" routerLink="/task/{{ searchText }}" />
+</form>
