@@ -18,14 +18,13 @@ export class SearchComponent implements OnInit {
     this.urlParams = this.router.url.substring(
       this.router.url.lastIndexOf('/') + 1
     );
-    this.searchText = this.urlParams;
-    setTimeout(() => {
-      this.onSubmit();
-    }, 1000);
+    this.searchText = decodeURIComponent(this.urlParams);
+
+    this.onSubmit();
   }
 
   onSubmit() {
     console.log(this.searchText);
-    this.onSearchTask.emit(this.searchText);
+    this.onSearchTask.emit(encodeURIComponent(this.searchText.trim()));
   }
 }

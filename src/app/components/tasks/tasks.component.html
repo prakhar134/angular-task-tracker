@@ -1,7 +1,7 @@
 <app-add-task (onAddTask)="addTask($event)"></app-add-task>
 <app-search (onSearchTask)="searchTask($event)"></app-search>
 <app-task-item
-  *ngFor="let task of tasks"
+  *ngFor="let task of searchResult"
   [task]="task"
   (onDeleteTask)="deleteTask(task)"
   (onToggleReminder)="toggleReminder(task)"

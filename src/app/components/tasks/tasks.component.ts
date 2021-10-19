@@ -15,18 +15,15 @@ export class TasksComponent implements OnInit {
 
   constructor(private taskService: TaskService, private router: Router) {}
 
-  // ngOnInit(): void {
-  //   this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
-  // }
-
   ngOnInit(): void {
-    this.tempFunc();
+    this.loadTasks();
   }
 
-  tempFunc() {
-    if (this.searchResult.length === 0) {
-      this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
-    } else this.tasks = this.searchResult;
+  loadTasks() {
+    this.taskService.getTasks().subscribe((tasks) => {
+      this.tasks = tasks;
+      this.searchResult = this.tasks;
+    });
   }
 
   deleteTask(task: Task) {
@@ -47,13 +44,10 @@ export class TasksComponent implements OnInit {
   }
 
   searchTask(text: string) {
-    console.log(text);
-    this.searchResult = [];
-    this.tasks.map((task) => {
-      const temp = task.text.split(' ');
-      if (temp.indexOf(text) !== -1) this.searchResult.push(task);
-    });
-
-    this.tempFunc();
+    text = decodeURIComponent(text);
+    this.searchResult = this.tasks.filter(
+      (task) => task.text.indexOf(text) !== -1
+    );
+    if (!this.searchResult.length && this.tasks.length) alert('nothing found');
   }
 }

@@ -9,20 +9,26 @@
     {
       "text": "test 5",
       "day": "test date time 5",
-      "reminder": true,
+      "reminder": false,
       "id": "av8vdJr"
     },
     {
       "text": "task 6",
       "day": "sasd",
-      "reminder": false,
+      "reminder": true,
       "id": "ACu50z2"
     },
     {
       "text": "test 7",
       "day": "dafafd",
-      "reminder": false,
+      "reminder": true,
       "id": "AW8uBlN"
+    },
+    {
+      "text": "adding task one more",
+      "day": "random date and time",
+      "reminder": true,
+      "id": "nzkST4B"
     }
   ]
 }
